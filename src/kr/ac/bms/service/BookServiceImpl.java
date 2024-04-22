@@ -19,11 +19,6 @@ public class BookServiceImpl implements BookService{
     }
 
     @Override
-    public Book list(Book book) {
-        return book;
-    }
-
-    @Override
     public ArrayList<Book> getALl() {
         return books;
     }
