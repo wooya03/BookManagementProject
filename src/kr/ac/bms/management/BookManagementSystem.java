@@ -53,7 +53,7 @@ public class BookManagementSystem implements ManagementSystem{
     }
     void regist(){
         System.out.print("장르 선택 [소설-1], [과학-2], [에세이-3] : ");
-        String c = scanner.next();
+        String type = scanner.next();
         System.out.print("제목 : ");
         String name = scanner.next();
         System.out.print("저자 : ");
@@ -61,9 +61,9 @@ public class BookManagementSystem implements ManagementSystem{
         System.out.print("가격 : ");
         int price = scanner.nextInt();
         Book book;
-        if(c.equals("1")){
+        if(type.equals("1")){
             book = new Novel(bookservice.uniqId(), name, writer, price);
-        } else if (c.equals("2")){
+        } else if (type.equals("2")){
             book = new Science(bookservice.uniqId(), name, writer, price);
         } else {
             book = new Essay(bookservice.uniqId(), name, writer, price);
@@ -73,19 +73,22 @@ public class BookManagementSystem implements ManagementSystem{
 
     void list(){
         System.out.print("[전체출력-0] [소설-1], [과학-2], [에세이-3] : ");
-        int c = scanner.nextInt();
+        int type = scanner.nextInt();
+        System.out.println("===============");
         for(Book b : bookservice.getALl()){
-            System.out.println("===============");
-            if (c == 1 && b instanceof Novel) {
+            if (type == 1 && b instanceof Novel) {
                 b.print();
-            } else if (c == 2 && b instanceof Science) {
+                System.out.println("===============");
+            } else if (type == 2 && b instanceof Science) {
                 b.print();
-            } else if (c == 3 && b instanceof Essay) {
+                System.out.println("===============");
+            } else if (type == 3 && b instanceof Essay) {
                 b.print();
-            } else if (c == 0){
+                System.out.println("===============");
+            } else if (type == 0){
                 b.print();
+                System.out.println("===============");
             }
-            System.out.println("===============");
         }
     }
 
